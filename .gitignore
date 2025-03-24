@@ -42,6 +42,7 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
+ProjectVision/BuildTools/.swiftpm
 
 # CocoaPods
 #

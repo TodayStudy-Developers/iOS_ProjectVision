@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		604A10FE2D91AD6C00997FEA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 604A10FD2D91AD6C00997FEA /* .swiftlint.yml */; };
+		604A11012D91AEAC00997FEA /* config.swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 604A11002D91AEAC00997FEA /* config.swiftformat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		604A10E92D91ABE600997FEA /* ProjectVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		604A10FD2D91AD6C00997FEA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		604A11002D91AEAC00997FEA /* config.swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.swiftformat; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -37,6 +39,7 @@
 		604A10E02D91ABE600997FEA = {
 			isa = PBXGroup;
 			children = (
+				604A11002D91AEAC00997FEA /* config.swiftformat */,
 				604A10FD2D91AD6C00997FEA /* .swiftlint.yml */,
 				604A10EB2D91ABE600997FEA /* ProjectVision */,
 				604A10EA2D91ABE600997FEA /* Products */,
@@ -58,6 +61,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 604A10F72D91ABE700997FEA /* Build configuration list for PBXNativeTarget "ProjectVision" */;
 			buildPhases = (
+				604A10FF2D91AE4D00997FEA /* Run Script */,
 				604A10E52D91ABE600997FEA /* Sources */,
 				604A10E62D91ABE600997FEA /* Frameworks */,
 				604A10E72D91ABE600997FEA /* Resources */,
@@ -119,11 +123,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				604A11012D91AEAC00997FEA /* config.swiftformat in Resources */,
 				604A10FE2D91AD6C00997FEA /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		604A10FF2D91AE4D00997FEA /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n#swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat \"$SRCROOT\" --config \"$SRCROOT/config.swiftformat\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		604A10E52D91ABE600997FEA /* Sources */ = {
@@ -272,6 +299,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectVision/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -301,6 +329,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectVision/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
