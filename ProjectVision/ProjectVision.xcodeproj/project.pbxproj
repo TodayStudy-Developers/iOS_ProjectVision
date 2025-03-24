@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		604A10FE2D91AD6C00997FEA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 604A10FD2D91AD6C00997FEA /* .swiftlint.yml */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		604A10E92D91ABE600997FEA /* ProjectVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		604A10FD2D91AD6C00997FEA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		604A10E02D91ABE600997FEA = {
 			isa = PBXGroup;
 			children = (
+				604A10FD2D91AD6C00997FEA /* .swiftlint.yml */,
 				604A10EB2D91ABE600997FEA /* ProjectVision */,
 				604A10EA2D91ABE600997FEA /* Products */,
 			);
@@ -59,6 +65,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				604A10FC2D91AD1000997FEA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				604A10EB2D91ABE600997FEA /* ProjectVision */,
@@ -94,6 +101,9 @@
 			);
 			mainGroup = 604A10E02D91ABE600997FEA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				604A10FA2D91AD0B00997FEA /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 604A10EA2D91ABE600997FEA /* Products */;
 			projectDirPath = "";
@@ -109,6 +119,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				604A10FE2D91AD6C00997FEA /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +134,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		604A10FC2D91AD1000997FEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 604A10FB2D91AD1000997FEA /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		604A10F52D91ABE700997FEA /* Debug */ = {
@@ -252,6 +270,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectVision/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -280,6 +299,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectVision/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -322,6 +342,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		604A10FA2D91AD0B00997FEA /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.58.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		604A10FB2D91AD1000997FEA /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 604A10FA2D91AD0B00997FEA /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 604A10E12D91ABE600997FEA /* Project object */;
 }
