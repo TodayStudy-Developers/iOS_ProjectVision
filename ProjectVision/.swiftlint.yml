@@ -9,8 +9,6 @@ disabled_rules:
 
 # 활성화할 옵트인 규칙
 opt_in_rules:
-    - explicit_enum_raw_value       # 열거형 원시 값 명시
-    - missing_docs                  # 문서 주석 필수
     - force_unwrapping              # 강제 언래핑 방지
 
 # 네이밍 규칙

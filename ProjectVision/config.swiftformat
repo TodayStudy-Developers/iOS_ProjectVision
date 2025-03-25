@@ -13,7 +13,6 @@
 --enable blockComments
 --enable docComments
 --enable isEmpty
---enable opaqueGenericParameters
 --enable organizeDeclarations
 --enable propertyTypes
 --enable redundantProperty
@@ -22,18 +21,18 @@
 --enable wrapMultilineConditionalAssignment
 --enable wrapSwitchCases
 
---disable conditionalAssignment
+--disable andOperator
 --disable redundantRawValues
 --disable wrapMultilineStatementBraces
 
 # options
---extensionacl on-declarations
---propertytypes inferred
+--emptybraces spaced
+--propertytypes explicit
 --inferredtypes always
 --maxwidth 100
---wraparguments before-first
---wrapparameters before-first
---wrapcollections before-first
+--wraparguments after-first
+--wrapparameters after-first
+--wrapcollections after-first
 --funcattributes prev-line
 --typeattributes prev-line
 --categorymark "MARK: - %c"
