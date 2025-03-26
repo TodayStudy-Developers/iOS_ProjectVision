@@ -16,12 +16,14 @@ struct RoomOneOCRView: View {
 
     @State private var imageOCR: OCR = .init()
     @State private var languageCorrection = false
+    @State private var selectedLanguage = Locale.Language(identifier: "ko-KR")
 
     // MARK: - Computed Properties
 
     /// Watch for changes to the request settings.
     var settingChanges: [String] { [languageCorrection.description,
-                                    imageData?.description].compactMap { $0 } }
+                                    imageData?.description,
+                                    selectedLanguage.maximalIdentifier].compactMap { $0 } }
 
     // MARK: - Content Properties
 
@@ -72,7 +74,7 @@ struct RoomOneOCRView: View {
         // A Boolean value that indicates whether the system applies the language-correction model.
         imageOCR.request.usesLanguageCorrection = languageCorrection
 
-        //        imageOCR.request.recognitionLanguages = [selectedLanguage]
+        imageOCR.request.recognitionLanguages = [selectedLanguage]
 
         //        switch selectedRecognitionLevel {
         //        case "Fast":
