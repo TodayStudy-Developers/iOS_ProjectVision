@@ -8,29 +8,46 @@
 import SwiftUI
 
 struct RoomOneView: View {
+    // MARK: - SwiftUI Properties
+
+    @State private var showCamera: Bool = false
+    @State private var hasPhoto: Bool = false
+    @State private var imageData: Data?
+
+    // MARK: - Content Properties
+
     var body: some View {
         VStack(spacing: 16) {
-            HStack {
-                Text("문제 1.")
-                    .font(.largeTitle.bold())
+            if hasPhoto {
+                RoomOneOCRView(showCamera: $showCamera, imageData: $imageData)
+            } else {
+                HStack {
+                    Text("문제 1.")
+                        .font(.largeTitle.bold())
+                    Spacer()
+                }
+                Text(Question.first.description)
                 Spacer()
-            }
-            Text(Question.first.description)
-            Spacer()
 
-            Button { } label: {
-                Text("문제 맞추기")
-                    .bold()
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background {
-                        RoundedRectangle(cornerRadius: 16)
-                            .foregroundStyle(.blue)
-                    }
+                Button {
+                    showCamera = true
+                } label: {
+                    Text("문제 맞추기")
+                        .bold()
+                        .padding()
+                        .foregroundStyle(.white)
+                        .background {
+                            RoundedRectangle(cornerRadius: 16)
+                                .foregroundStyle(.blue)
+                        }
+                }
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
         }
         .padding()
+        .fullScreenCover(isPresented: $showCamera) {
+            CameraUI(showCamera: $showCamera, hasPhoto: $hasPhoto, imageData: $imageData)
+        }
     }
 }
 
