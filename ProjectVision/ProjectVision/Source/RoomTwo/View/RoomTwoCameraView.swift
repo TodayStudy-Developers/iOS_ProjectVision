@@ -23,7 +23,7 @@ struct RoomTwoCameraView: View {
 
     var body: some View {
         ZStack {
-            CameraPreview(controller: cameraController)
+            CameraView(controller: cameraController)
                 .ignoresSafeArea()
 
             VStack {
