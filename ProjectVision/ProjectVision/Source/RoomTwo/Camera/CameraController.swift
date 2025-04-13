@@ -39,11 +39,11 @@ class CameraController: NSObject, ObservableObject {
 }
 
 extension CameraController: CameraFrameDelegate {
-    func sendFrameOutput(from: CameraManager, didOutput sampleBuffer: CMSampleBuffer) {
+    func sendFrameOutput(from _: CameraManager, didOutput sampleBuffer: CMSampleBuffer) {
         analyzer.analyze(sampleBuffer: sampleBuffer) { [weak self] thumb in
             Task { @MainActor in
                 print("Analyzing hand pose...")
-//                self?.handShakeCount = self?.analyzer.processPoints(thumbTip: thumb)
+                self?.handShakeCount = self?.analyzer.processThumbTip(thumbTip: thumb)
 //                print("\(self?.handShakeCount)")
             }
         }
