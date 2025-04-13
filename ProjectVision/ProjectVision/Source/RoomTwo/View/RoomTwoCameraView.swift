@@ -12,11 +12,13 @@ struct RoomTwoCameraView: View {
     // MARK: - SwiftUI Properties
 
     @StateObject private var cameraController: CameraController = .init()
+    @Binding var viewModel: RoomTwoViewModel
+    @Environment(\.dismiss) private var dismiss
 
     // MARK: - Computed Properties
 
     var isSuccess: Bool {
-        (cameraController.handShakeCount ?? 0) >= 3
+        (cameraController.handShakeCount ?? 0) >= 5
     }
 
     // MARK: - Content Properties
@@ -38,6 +40,10 @@ struct RoomTwoCameraView: View {
                                 .bold()
                                 .font(.title2)
                                 .foregroundColor(.green)
+                                .onAppear {
+                                    viewModel.isComplete = true
+                                    dismiss()
+                                }
                         } else {
                             Text("손을 좌우로 흔들어주세요")
                                 .bold()
@@ -50,7 +56,7 @@ struct RoomTwoCameraView: View {
 
                 // 손 흔든 횟수 표시
                 if let count = cameraController.handShakeCount, count > 0 {
-                    Text("(\(count)/3)")
+                    Text("(\(count)/5)")
                         .bold()
                         .font(.title2)
                         .foregroundColor(.white)
