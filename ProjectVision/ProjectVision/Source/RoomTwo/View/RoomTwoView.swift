@@ -1,31 +1,36 @@
 //
-//  RoomOneView.swift
+//  RoomTwoView.swift
 //  ProjectVision
 //
-//  Created by 권승용 on 3/25/25.
+//  Created by minsong kim on 3/25/25.
 //
 
 import SwiftUI
 
-/// 첫번째 방 문제를 나타내는 뷰
-struct RoomOneView: View {
+struct RoomTwoView: View {
     // MARK: - SwiftUI Properties
 
-    @State private var viewModel: RoomOneViewModel = .init()
+    @State private var viewModel: RoomTwoViewModel = .init()
 
     // MARK: - Content Properties
 
     var body: some View {
-        if viewModel.isShowingQuestion {
+        if viewModel.isComplete {
             VStack {
-                Image(.roomOneQuesion)
+                Image(.escapeComplete)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: .infinity)
 
-                Button { } label: {
-                    Text("답장해 주러 가기")
-                        .font(.system(size: 18))
+                Text("성공~!")
+                    .bold()
+                    .font(.largeTitle)
+                    .foregroundStyle(.black)
+            }
+        } else if viewModel.isShowingQuestion {
+            NavigationStack {
+                NavigationLink(destination: RoomTwoCameraView(viewModel: $viewModel)) {
+                    Text("인사하러 가기")
+                        .bold()
                         .foregroundStyle(.white)
                         .padding()
                         .background {
@@ -33,7 +38,6 @@ struct RoomOneView: View {
                                 .foregroundStyle(.black)
                         }
                 }
-                .padding(.top, 50)
             }
         } else {
             VStack {
@@ -58,5 +62,5 @@ struct RoomOneView: View {
 }
 
 #Preview {
-    RoomOneView()
+    RoomTwoView()
 }
