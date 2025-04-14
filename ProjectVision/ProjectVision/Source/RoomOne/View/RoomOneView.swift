@@ -11,19 +11,26 @@ import SwiftUI
 struct RoomOneView: View {
     // MARK: - SwiftUI Properties
 
+    @State private var showCamera: Bool = false
+    @State private var hasPhoto: Bool = false
+    @State private var imageData: Data?
     @State private var viewModel: RoomOneViewModel = .init()
 
     // MARK: - Content Properties
 
     var body: some View {
-        if viewModel.isShowingQuestion {
-            VStack {
+        VStack {
+            if hasPhoto {
+                RoomOneOCRView(showCamera: $showCamera, imageData: $imageData)
+            } else if viewModel.isShowingQuestion {
                 Image(.roomOneQuesion)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: .infinity)
 
-                Button { } label: {
+                Button {
+                    showCamera = true
+                } label: {
                     Text("답장해 주러 가기")
                         .font(.system(size: 18))
                         .foregroundStyle(.white)
@@ -34,9 +41,8 @@ struct RoomOneView: View {
                         }
                 }
                 .padding(.top, 50)
-            }
-        } else {
-            VStack {
+
+            } else {
                 Image(viewModel.roomQuestion.storyPages[viewModel.currentPage].image)
                     .resizable()
                     .scaledToFit()
@@ -53,6 +59,9 @@ struct RoomOneView: View {
                     .padding()
                     .frame(height: 200)
             }
+        }
+        .fullScreenCover(isPresented: $showCamera) {
+            CameraUI(showCamera: $showCamera, hasPhoto: $hasPhoto, imageData: $imageData)
         }
     }
 }
