@@ -38,32 +38,28 @@ struct CameraUI: View {
 
             cameraControls
         }
+        .onChange(of: camera.hasPhoto) {
+            imageData = camera.photoData
+            showCamera = false
+            hasPhoto = true
+        }
     }
 
     @ViewBuilder var cameraControls: some View {
-        if !camera.hasPhoto {
-            Button {
-                camera.capturePhoto()
-            } label: {
-                ZStack {
-                    Circle()
-                        .stroke(.white, lineWidth: 2)
-                        .frame(width: 70)
+        Button {
+            camera.capturePhoto()
+        } label: {
+            ZStack {
+                Circle()
+                    .stroke(.white, lineWidth: 2)
+                    .frame(width: 70)
 
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 60)
-                }
+                Circle()
+                    .fill(.white)
+                    .frame(width: 60)
             }
-            .buttonStyle(CaptureButtonStyle())
-        } else {
-            Button("Done") {
-                imageData = camera.photoData
-                showCamera = false
-                hasPhoto = true
-            }
-            .buttonStyle(DoneButtonStyle())
         }
+        .buttonStyle(CaptureButtonStyle())
     }
 }
 
